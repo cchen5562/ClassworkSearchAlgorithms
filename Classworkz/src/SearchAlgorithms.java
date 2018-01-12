@@ -21,5 +21,39 @@ public class SearchAlgorithms
 		System.out.println(binSearch(test1, 1)); //0
 	}
 	
+	//return index of query, or -1 if query not found
 	public static int linSearch(int[]nums, int query)
+	{
+		for(int i = 0; i < nums.length; i++)
+			{
+				if(nums[i] == query)
+				{
+					return i;
+				}
+			} return -1;
+	}
+	
+	//pre-condition: nums is sorted in ascending order
+	public static int binSearch(int[]nums, int query)
+	{
+		int L = 0;
+		int R = nums.length - 1;
+		while(L <= R)
+		{
+			int mid = L + (R-L)/2;
+			if(query == nums[mid])
+			{
+				return mid;
+			} 
+			else if(query < nums[mid])
+			{
+				R = mid - 1;
+			}
+			else if(query > nums[mid]) 
+			{
+				L = mid + 1;
+			}
+		} return -1;
+	}
+	
 }
